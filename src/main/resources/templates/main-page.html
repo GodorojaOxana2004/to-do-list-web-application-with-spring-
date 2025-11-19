@@ -1,0 +1,76 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>ToDo List</title>
+    <link th:href="@{/css/main-page.css}" rel="stylesheet">
+</head>
+<body>
+<div class="main-wrapper">
+
+    <header class="header">
+        <h1>ToDo List</h1>
+        <span class="count-info"
+              th:text="${numberActiveRecords} + ' more to do ' + ${numberDoneRecords} + ' done'">
+        </span>
+    </header>
+
+    <section class="filters">
+        <form id="filter-form" th:action="@{/home}" method="get">
+            <label>
+                <input type="radio" name="filter" value="all"> All
+            </label>
+            <label>
+                <input type="radio" name="filter" value="active"> Active
+            </label>
+            <label>
+                <input type="radio" name="filter" value="done"> Done
+            </label>
+            <button type="submit">Apply Filter</button>
+        </form>
+    </section>
+
+    <main class="items">
+        <div class="items">
+
+            <div th:if="${#lists.isEmpty(records)}">
+                <span>There are not task!</span>
+            </div>
+
+            <div th:each="record : ${records}" th:if="${!#lists.isEmpty(records)}" class="item">
+
+                <div class="item-text">
+                    <h3 th:text="${record.title}"
+                        th:classappend="${record.status.name() == 'DONE'} ? 'btn-done-done' : ''">
+                    </h3>
+                </div>
+
+                <div class="controls">
+
+                    <form th:if="${record.status.name() == 'ACTIVE'}"
+                          th:action="@{/markDone}" method="post">
+                        <input type="hidden" name="id" th:value="${record.id}">
+                        <button type="submit" class="btn-done" title="MarksDone">✓</button>
+                    </form>
+
+                    <form th:action="@{/delete}" method="post">
+                        <input type="hidden" name="id" th:value="${record.id}">
+                        <button type="submit" class="btn-delete" title="Delete Task">✕</button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <section class="input-form">
+        <form id="add-form" th:action="@{/addTask}" method="post">
+            <label>
+                <input type="text" name="taskDescription" placeholder="What needs to be done?" required>
+            </label>
+            <button type="submit">Add Task</button>
+        </form>
+    </section>
+
+</div>
+</body>
+</html>
