@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    padding: 40px 10px;
+}
+
+.main-wrapper {
+    width: 100%;
+    max-width: 500px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.header h1 {
+    font-size: 2em;
+    color: #333;
+}
+
+.count-info {
+    font-size: 0.9em;
+    color: #666;
+    font-weight: 500;
+}
+
+.filters {
+    margin-bottom: 25px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.filters form {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.filters label {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.3s;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
+
+.item h3 {
+    font-size: 1.1em;
+    font-weight: 400;
+    color: #444;
+}
+
+.item.done h3 {
+    text-decoration: line-through;
+    color: #aaa;
+}
+
+.controls {
+    display: flex;
+    gap: 5px;
+}
+
+
+.btn-done {
+    background-color: #6e9823;
+}
+
+.btn-done-done{
+    text-decoration: line-through;
+}
+
+.btn-delete {
+    background-color: #f44336;
+    color: white;
+}
+
+.input-form {
+    padding-top: 25px;
+}
+
+.input-form form {
+    display: flex;
+    gap: 10px;
+}
+
+.input-form input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create account</title>
+    <link th:href="@{/css/public/authorization/authorization-page.css}" rel="stylesheet">
+</head>
+<body>
+<div class="page-wrapper">
+    <div class="container">
+        <div class="header-container">
+            <h2 class="header-container__text">Registration</h2>
+        </div>
+        <div class="form-container">
+            <form action="/registration" method="post" class="form-container__form">
+                <div class="form-container__input-wrapper">
+                    <input type="text" name="name" placeholder="Enter your name" class="form-container__input" required>
+                </div>
+                <div class="form-container__input-wrapper">
+                    <input type="email" name="email" placeholder="Enter your email" class="form-container__input" required>
+                </div>
+                <div class="form-container__input-wrapper">
+                    <input type="password" name="password" placeholder="Enter your password" class="form-container__input" required>
+                </div>
+                <div class="form-container__button-wrapper">
+                    <button type="submit" class="form-container__button">Sign up</button>
+                </div>
+            </form>
+        </div>
+        <div class="footer-link-container">
+            <span class="footer-link-container__text">Already have an account? <a href="/account/login" class="footer-link-container__link">Log in</a></span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

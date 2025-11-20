@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    background-color: #282E33;
+    font-family: sans-serif;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    padding: 9px 14px 9px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    background-color: #3A87E0;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    transition: background-color .1s ease-in-out;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #3479c9;
+}
+
+.page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    padding: 32px;
+    border-radius: 20px;
+    background-color: #fff;
+    min-width: 250px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.header-container__text {
+    margin: 0;
+}
+
+.form-container {
+    margin-top: 8px;
+}
+
+.form-container__form {
+    margin-bottom: 0;
+}
+
+.form-container__input-wrapper {
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.form-container__warning-wrapper {
+    margin-left: 12px;
+}
+
+.form-container__button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.form-container__input {
+    width: 100%;
+    padding: 8px 10px 8px 10px;
+    border: 1px solid #dedede;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.form-container__input:focus {
+    outline: none;
+    border: 1px solid #a9bed6;
+    box-shadow: 0 0 2px 0 #2d81e2;
+}
+
+.form-container__warning {
+    font-size: 14px;
+    font-weight: 500;
+    color: #F45858;
+}
+
+.form-container__button  {
+    width: fit-content;
+    margin-left: 8px;
+    white-space: nowrap;
+}
+
+.footer-link-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.footer-link-container__text {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.footer-link-container__link {
+    text-decoration: none;
+    color: #3A87E0;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.footer-link-container__link:hover {
+    color: #3A87E0;
+}

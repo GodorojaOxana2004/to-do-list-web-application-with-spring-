@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>ToDo List</title>
-    <link th:href="@{/css/main-page.css}" rel="stylesheet">
+    <link th:href="@{/css/private/account-page.css}" rel="stylesheet">
 </head>
 <body>
 <div class="main-wrapper">
@@ -14,7 +14,7 @@
     </header>
 
     <section class="filters">
-        <form id="filter-form" th:action="@{/home}" method="get">
+        <form id="filter-form" th:action="@{/account}" method="get">
             <label>
                 <input type="radio" name="filter" value="all"> All
             </label>
@@ -46,12 +46,12 @@
                 <div class="controls">
 
                     <form th:if="${record.status.name() == 'ACTIVE'}"
-                          th:action="@{/markDone}" method="post">
+                          th:action="@{/account/markDone}" method="post">
                         <input type="hidden" name="id" th:value="${record.id}">
                         <button type="submit" class="btn-done" title="MarksDone">✓</button>
                     </form>
 
-                    <form th:action="@{/delete}" method="post">
+                    <form th:action="@{/account/delete}" method="post">
                         <input type="hidden" name="id" th:value="${record.id}">
                         <button type="submit" class="btn-delete" title="Delete Task">✕</button>
                     </form>
@@ -63,7 +63,7 @@
     </main>
 
     <section class="input-form">
-        <form id="add-form" th:action="@{/addTask}" method="post">
+        <form id="add-form" th:action="@{/account/addTask}" method="post">
             <label>
                 <input type="text" name="taskDescription" placeholder="What needs to be done?" required>
             </label>
