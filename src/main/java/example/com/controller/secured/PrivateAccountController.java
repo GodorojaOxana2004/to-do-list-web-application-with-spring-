@@ -1,5 +1,9 @@
 package example.com.controller.secured;
 
+import example.com.entity.User;
+import example.com.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,15 +19,21 @@ import example.com.service.RecordService;
 @RequestMapping("/account")
 public class PrivateAccountController {
     private final RecordService recordService;
+    private final UserService userService;
+
 
     @Autowired
-    public PrivateAccountController (RecordService recordService) {
+    public PrivateAccountController (RecordService recordService, UserService userService) {
         this.recordService = recordService;
+        this.userService = userService;
     }
 
     @GetMapping
-    public String getMainPage (Model model, @RequestParam(name = "filter", required = false) String filterMode) {
+    public String getMainPage (HttpServletRequest request,Model model, @RequestParam(name = "filter", required = false) String filterMode) {
+        HttpSession httpSession = request.getSession();
+        User user = userService.getUser();
         RecordsContainerDto containerDto = recordService.findAllRecords(filterMode);
+        model.addAttribute("userName",user.getName());
         model.addAttribute("numberDoneRecords", containerDto.getNumberDoneRecords());
         model.addAttribute("numberActiveRecords", containerDto.getNumberActiveRecords());
         model.addAttribute("records", containerDto.getRecords());

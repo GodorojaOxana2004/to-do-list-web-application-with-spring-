@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Header Fragment</title>
+    <link th:href="@{/css/fragments/header-fragment.css}" rel="stylesheet">
+</head>
+<body>
+<div th:fragment="header-fragment (userName)" class="navbar-wrapper">
+    <div class="navbar-container">
+        <div class="navbar-container__left-menu">
+            <div class="navbar-container__controls">
+                <a href="/" class="navbar-container__controls-link">Home</a>
+            </div>
+            <div class="navbar-container__controls">
+                <a href="/account" class="navbar-container__controls-link">Account</a>
+            </div>
+            <div class="navbar-container__controls">
+                <a href="/admin" class="navbar-container__controls-link">Management</a>
+            </div>
+        </div>
+        <div class="navbar-container__right-menu">
+            <div class="navbar-container__controls">
+                <span class="navbar-container__controls-text">(User: [[${userName}]])</span>
+                <a href="/logout" class="navbar-container__controls-link">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

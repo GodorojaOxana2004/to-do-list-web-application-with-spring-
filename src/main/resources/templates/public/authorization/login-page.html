@@ -1,5 +1,5 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
@@ -14,21 +14,24 @@
         <div class="form-container">
             <form action="/login" method="post" class="form-container__form">
                 <div class="form-container__input-wrapper">
-                    <input type="email" name="email" placeholder="Enter your email" class="form-container__input" required>
+                    <input type="email" name="email" placeholder="Enter your email" class="form-container__input"
+                           required>
                 </div>
                 <div class="form-container__input-wrapper">
-                    <input type="password" name="password" placeholder="Enter your password" class="form-container__input" required>
+                    <input type="password" name="password" placeholder="Enter your password"
+                           class="form-container__input" required>
                 </div>
-                <!--                    <div class="form-container__warning-wrapper">-->
-                <!--                        <span class="form-container__warning">Wrong email or password</span>-->
-                <!--                    </div>-->
+                <div th:if="${IsAuthenticationFailed}" class="form-container__warning-wrapper">
+                    <span class="form-container__warning">Wrong email or password</span>
+                </div>
                 <div class="form-container__button-wrapper">
                     <button type="submit" class="form-container__button">Log in</button>
                 </div>
             </form>
         </div>
         <div class="footer-link-container">
-            <span class="footer-link-container__text">Don't have an account? <a href="/registration" class="footer-link-container__link">Sign up</a></span>
+            <span class="footer-link-container__text">Don't have an account? <a href="/registration"
+                                                                                class="footer-link-container__link">Sign up</a></span>
         </div>
     </div>
 </div>

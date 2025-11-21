@@ -10,6 +10,8 @@ body {
     display: flex;
     justify-content: center;
     padding: 40px 10px;
+    flex-direction: column;
+    align-items: center;
 }
 
 .main-wrapper {
@@ -131,5 +133,6 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
 
 

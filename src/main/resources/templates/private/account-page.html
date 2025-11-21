@@ -2,8 +2,12 @@
 <head>
     <title>ToDo List</title>
     <link th:href="@{/css/private/account-page.css}" rel="stylesheet">
+    <link th:href="@{/css/fragments/header-fragment.css}" rel="stylesheet">
 </head>
 <body>
+
+
+<div th:replace="fragments/header-fragment.html :: header-fragment (userName=${userName})"></div>
 <div class="main-wrapper">
 
     <header class="header">

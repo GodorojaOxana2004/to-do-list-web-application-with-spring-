@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/css/private/admin/managment-page.css">
+    <link th:href="@{/css/fragments/header-fragment.css}" rel="stylesheet">
 </head>
 <body>
+<div th:replace="fragments/header-fragment.html :: header-fragment (userName=${userName})"></div>
 <h2>Admin page will be placed here!</h2>
 </body>
 </html>

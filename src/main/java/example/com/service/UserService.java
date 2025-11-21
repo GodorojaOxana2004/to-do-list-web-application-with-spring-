@@ -2,6 +2,7 @@ package example.com.service;
 
 import example.com.entity.User;
 import example.com.repository.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,5 +18,12 @@ public class UserService {
     public void save(User user){
        userRepository.save(user);
 
+    }
+
+    public User getUser(){
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        return userRepository.
+                findByEmailIgnoreCase(email).
+                orElseThrow(()->new IllegalArgumentException("User with email=" + email+"not found."));
     }
 }
