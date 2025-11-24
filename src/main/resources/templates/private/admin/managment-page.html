@@ -1,13 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Management</title>
     <link rel="stylesheet" href="/css/private/admin/managment-page.css">
-    <link th:href="@{/css/fragments/header-fragment.css}" rel="stylesheet">
+    <link href="/css/fragments/header-fragment.css" rel="stylesheet">
 </head>
 <body>
 <div th:replace="fragments/header-fragment.html :: header-fragment (userName=${userName})"></div>
-<h2>Admin page will be placed here!</h2>
+<div class="page-wrapper">
+    <div class="container">
+        <div class="header-container">
+            <div class="header__text">
+                <h2>Users List</h2>
+            </div>
+        </div>
+        <div th:with="isCandidatesToDeleteEmpty=${candidatesToDelete == null or candidatesToDelete.isEmpty()}" class="records-container">
+            <div th:if="${isCandidatesToDeleteEmpty}" class="hint">
+                <span>There are no users!</span>
+            </div>
+            <div th:if="${!isCandidatesToDeleteEmpty}" th:each="user: ${candidatesToDelete}" class="record">
+                <div class="record__title">
+                    <span th:text="${user.email}"></span>
+                    <span th:if="${user.role.name == 'ADMIN'}">(admin)</span>
+                </div>
+                <div class="record__controls">
+                    <form action="/admin/delete-user" method="post" class="record__controls-form">
+                        <input th:value="${user.id}" type="hidden" name="id">
+                        <button type="submit" class="button_type_close">
+                            <svg width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M12.071 13.485l-2.828 2.829-1.415-1.415 2.829-2.828-2.829-2.828 1.415-1.415 2.828 2.829L14.9 7.828l.707.708.707.707-2.829 2.828 2.829 2.829-1.415 1.414-2.828-2.829z" fill="#000"></path>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="header-container">
+            <div class="header__text">
+                <h2>Upgrade to Admin</h2>
+            </div>
+        </div>
+        <div th:with="isCandidatesToUpgradeEmpty=${candidatesToUpgrade == null or candidatesToUpgrade.isEmpty()}" class="form-container">
+            <form action="/super-admin/make-user-admin" method="post" class="form-container__form">
+                <div class="form-container__input-wrapper">
+                    <select name="id" class="form-container__select">
+                        <option th:if="${isCandidatesToUpgradeEmpty}" selected disabled>There are no users</option>
+                        <option th:if="${!isCandidatesToUpgradeEmpty}" th:each="user: ${candidatesToUpgrade}" th:value="${user.id}" th:text="${user.email}"></option>
+                    </select>
+                </div>
+                <div class="form-container__button-wrapper">
+                    <button th:disabled="${isCandidatesToUpgradeEmpty}" th:classappend="${isCandidatesToUpgradeEmpty ? 'form-container__button_disabled' : ''}" type="submit" class="form-container__button">Upgrade</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

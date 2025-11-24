@@ -29,8 +29,7 @@ public class PrivateAccountController {
     }
 
     @GetMapping
-    public String getMainPage (HttpServletRequest request,Model model, @RequestParam(name = "filter", required = false) String filterMode) {
-        HttpSession httpSession = request.getSession();
+    public String getMainPage (Model model, @RequestParam(name = "filter", required = false) String filterMode) {
         User user = userService.getUser();
         RecordsContainerDto containerDto = recordService.findAllRecords(filterMode);
         model.addAttribute("userName",user.getName());

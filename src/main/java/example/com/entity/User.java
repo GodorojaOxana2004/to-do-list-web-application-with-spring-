@@ -2,6 +2,8 @@ package example.com.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -22,6 +24,17 @@ public class User {
 
     @Column(name = "role",nullable = false)
     private UserRole role;
+
+    public List<Record> getRecords () {
+        return records;
+    }
+
+    public void setRecords (List<Record> records) {
+        this.records = records;
+    }
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    List<Record> records;
 
     public int getId(){
         return id;
@@ -71,5 +84,15 @@ public class User {
 
     public void setEmail (String email) {
         this.email = email;
+    }
+
+    public boolean isAdmin(){
+        return this.role == UserRole.ADMIN;
+    }
+    public boolean isSuperAdmin(){
+        return this.role == UserRole.SUPER_ADMIN;
+    }
+    public boolean isSimpleUser(){
+        return this.role == UserRole.USER;
     }
 }
