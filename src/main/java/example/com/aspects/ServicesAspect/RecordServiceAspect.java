@@ -1,4 +1,4 @@
-package example.com.aspects;
+package example.com.aspects.ServicesAspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
